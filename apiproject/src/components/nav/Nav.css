@@ -1,0 +1,15 @@
+/* Medium screens */
+@media all and (max-width: 800px) {
+    nav {
+        /* When on medium sized screens, we center it by evenly distributing empty space around items */
+        flex-direction: column;
+    }
+}
+
+/* Small screens */
+@media all and (max-width: 500px) {
+    nav {
+        /* On small screens, we are no longer using row direction but column */
+        flex-direction: column;
+    }
+}

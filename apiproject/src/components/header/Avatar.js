@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
-import Pic from '../../images/cg.jpg';
+import Pic from '../../images/im1.jpeg';
 
 const styles = {
     avatar: {

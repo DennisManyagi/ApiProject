@@ -4,6 +4,14 @@ import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import MyBtn from './components/buttons/MyBtn'
 import MyForm from './components/myForm/MyForm'
+import Search from './components/search/Search'
+import Main from './components/Main'
+
+
+// import SearchList from './components/search/SearchList'
+import MyModal from './components/MyModal'
+import ResponsiveModal from './components/ResponsiveModal'
+
 
 //React Router
 import {
@@ -21,12 +29,25 @@ import { MdAddCircle } from 'react-icons/md';
 import { TiBookmark } from 'react-icons/ti';
 import { GoPerson } from 'react-icons/go'
 
+function searchMe(search){
+    return function(searchFirstName){
+
+//includes() method determines whether one string may be found within another string, returning true or false as appropriate
+        return searchFirstName.fname.toLowerCase().includes(search.toLowerCase()) || !search
+
+
+
+    }
+}
+
 class App extends Component{
 
   constructor(props){
     super(props);
     this.state={
       items: [],
+      myInput: '',
+      search: '',
       isLoaded: false,
     }
   }
@@ -43,6 +64,15 @@ class App extends Component{
         })
   }
 
+    changeMeMan = e => {
+
+        this.setState({myInput: e.target.value})
+    }
+
+    searchStudents = e =>{
+        this.setState({search: e.target.value})
+    }
+
   render() {
 
 
@@ -56,13 +86,18 @@ class App extends Component{
 
       return (
           <Router>
-          <div className="App">
-              <Header pgTitle='Rhythm Music App'/>
+          <div style={styles.container}>
+              <div style={styles.left}>
+                  <Header pgTitle='Rhythm Music App'/>
+              </div>
+              <div style={styles.center}>
               <FaBeer />
               <FaAmbulance />
               <MdAddCircle />
               <TiBookmark />
               <GoPerson />
+              <Search searchMe={this.searchMe} />
+              <Main/>
             <ul>
               {items.map(item =>(
                   <li key={item.id}>
@@ -70,6 +105,16 @@ class App extends Component{
                   </li>
               ))};
             </ul>
+              <MyForm
+                  changeMeMan ={this.changeMeMan}
+                  myInput={this.state.myInput}
+              />
+              </div>
+              <div style={styles.right}>
+              <MyModal />
+              <ResponsiveModal />
+              </div>
+
 
           </div>
               <Footer />
@@ -80,3 +125,38 @@ class App extends Component{
 }
 
 export default App;
+
+const styles = {
+
+    container: {
+
+        display: 'flex',
+        flexWrap: 'wrap'
+
+    },
+
+    left: {
+
+        flex: '1',
+        padding: '20px',
+        background: '#ccc',
+        order: '1'
+    },
+
+    center: {
+
+        flex: '2',
+        order: '2',
+        background: '#eee',
+        padding: '20px'
+    },
+
+    right: {
+
+        flex: '1',
+        padding: '20px',
+        justifyContent: 'space-around',
+        order: '3'
+
+    }
+}

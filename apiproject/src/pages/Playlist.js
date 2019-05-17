@@ -6,8 +6,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Profile from '../components/Profile';
-import PictureOne from '../images/cg.jpg';
+import PictureOne from '../images/im1.jpeg';
 import Random from '../components/Random';
 
 
@@ -49,7 +48,6 @@ function Dashboard(props) {
     return (
         <div>
             <NavList />
-            <Profile />
             <Random />
                 <div>
                     <Grid container spacing={24}>

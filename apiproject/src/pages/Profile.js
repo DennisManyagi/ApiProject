@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-class Pg3 extends Component {
+class Profile extends Component {
 
     render(){
         return(
             <section className="">
-            <p>Message</p>
+            <p>Profile</p>
         </section>
     );
     }
 }
 
-export default Pg3;
+export default Profile;
